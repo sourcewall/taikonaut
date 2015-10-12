@@ -1,5 +1,4 @@
-# Taikonaut
-#### Sass Library
+# TAIKONAUT
 
 __Taikonaut is a collection of Sass functions and mixins.__
 
