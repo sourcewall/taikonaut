@@ -1,0 +1,51 @@
+// ::::::::::::::::::::::::::::::::::::::::::::::::::
+// Responsive Functions and Mixins
+//
+// Functions and Mixins to work with responsive behaviors
+// The functions assist with responsive behaviors, handling things like named
+// breakpoints and
+//
+// References:
+// - Hugo Giradel: http://www.sitepoint.com/managing-responsive-breakpoints-sass/
+// - jonny gotham (https://github.com/jonnygotham)
+// ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+// Responsive Style Mixin
+// This mixin requires an external settings map for "breakpoints"
+// This mixin takes in a named breakpoint and outputs a proper media-query for
+// that particular breakpoint style, working in a "mobile-first" method to
+// progressively change the element styles
+// ...............................................
+@mixin responsive-style-at($name) {
+  // Conditional check for named breakpoint in $breakpoints map
+  @if map-has-key($breakpoints, $name) {
+    // create media query based on the named breakpoint's value
+    @media #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+
+  // Error thrown if named breakpoint is not found in $breakpoints map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+// PROJECT SPECIFIC VARIABLE:
+// Breakpoints
+// This is a map of named breakpoint values, prefixed with "vp" for
+// "viewport". Variables are named in pixels for understanding, but
+// set as em values for use in the actual media query.  Include this
+// in your project when using responsive styles.
+// ...............................................
+// $breakpoints: (
+//   'vp-320' :      (min-width: 20.0000em),
+//   'vp-480' :      (min-width: 30.0000em),
+//   'vp-640' :      (min-width: 40.0000em),
+//   'vp-768' :      (min-width: 48.0000em),
+//   'vp-1024':      (min-width: 64.0000em),
+//   'vp-1280':      (min-width: 80.0000em),
+//   'vp-1400':      (min-width: 87.5000em)
+// );

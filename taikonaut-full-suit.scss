@@ -4,3 +4,12 @@
 // This manifest includes all files and the full collection of Sass helpers
 //
 // ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// Tools
+
+// Function
+@import 'function/rem-fallback';
+@import 'function/responsive-behaviors';
+
+// Form
+@import 'form/color';

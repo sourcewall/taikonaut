@@ -1,0 +1,22 @@
+// ::::::::::::::::::::::::::::::::::::::::::::::::::
+// Color Functions
+//
+// Functions that work with colors.
+// Beyond basic color functions, this file contains functions to work with color
+// palettes (created as Sass maps), to allow for easy retrieval of base colors and
+// tonal variants.
+//
+// References:
+// http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/
+// ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// Simple Color Retrieval
+// ...............................................
+@function color-from($palette_name, $palette, $tone: 'base') {
+  @if type-of($palette_name) == "string" {
+    @warn "$palette_name is a String, but should be a passed-in variable for a palette map.";
+    @return false;
+  }
+
+  @return map-get(map-get($palette_name, $palette), $tone);
+}

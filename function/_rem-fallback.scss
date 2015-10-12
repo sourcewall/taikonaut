@@ -1,0 +1,44 @@
+// ::::::::::::::::::::::::::::::::::::::::::::::::::
+// Rem Fallback Functions
+//
+// Functions and mixins used for style conversion to rem units of measure
+// (as oppposed to px, em, etc.)
+// ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// Strip Unit
+// Takes in a value and removes its secondary string to gain its core values
+// ...............................................
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// Rem Fallback
+// This takes in a CSS attribute name and it's value in rem units, returning
+// that attribute in both px and rem form for legacy browser compatibility
+// ...............................................
+@mixin rem-fallback($property, $values...) {
+  $max: length($values);
+  $pxValues: '';
+  $remValues: '';
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $pxValues: #{$pxValues + $value*16}px;
+
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+    }
+  }
+
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+    $remValues: #{$remValues + $value}rem;
+
+    @if $i < $max {
+      $remValues: #{$remValues + " "};
+    }
+  }
+
+  #{$property}: $pxValues;
+  #{$property}: $remValues;
+}
