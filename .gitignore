@@ -1,2 +1,10 @@
+# Development-related files
+.DS_Store
+*.tmproj
+*.swp
+.bundle
 .sass-cache
 *.css.map
+.powder
+tmp/*
+config.ru
