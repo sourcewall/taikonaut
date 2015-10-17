@@ -19,7 +19,6 @@ html {
 }
 body {
   margin: 0;
-  font: 16px/1 $sans-serif;
 }
 iframe {
   border: 0;
@@ -63,7 +62,6 @@ sup {
 a,
 button {
   color: inherit;
-  transition: $global-transition-duration;
 }
 a {
   text-decoration: none;
