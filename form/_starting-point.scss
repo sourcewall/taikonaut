@@ -6,9 +6,18 @@
 // keep things as organic as Normalize.
 //
 // References:
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
 // http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation
 // ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+/* Apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
 /* SIMPLIFIED RESET */
 html {
   -ms-text-size-adjust: 100%;
