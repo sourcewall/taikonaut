@@ -17,9 +17,17 @@
 // that particular breakpoint style, working in a "mobile-first" method to
 // progressively change the element styles
 // ...............................................
-@mixin responsive-style-at($name) {
-  // Conditional check for named breakpoint in $breakpoints map
-  @if map-has-key($breakpoints, $name) {
+@mixin responsive-style-at($name, $hiRes: false, $resDPR: 2) {
+  // Conditional check for named breakpoint in $breakpoints map and if hi-res
+  @if map-has-key($breakpoints, $name) and $hiRes {
+    // create media query based on the named breakpoint's value
+    @media (min-device-pixel-ratio: $resDPR) and #{inspect(map-get($breakpoints, $name))} {
+      @content;
+    }
+  }
+
+  // Conditional check for named breakpoint in $breakpoints map for 1:1 resolutions
+  @else if map-has-key($breakpoints, $name) and ($hiRes == false) {
     // create media query based on the named breakpoint's value
     @media #{inspect(map-get($breakpoints, $name))} {
       @content;
