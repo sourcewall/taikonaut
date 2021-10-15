@@ -9,6 +9,6 @@ While much of this library assists with standard practices and builds, there are
 
 ## Prerequisites
 
-Taikonaut assumes usage of a prefixer in efforts to stay cross-compatible and current with evolving web standards for  CSS specifications.
+Taikonaut assumes usage of a prefixer in efforts to stay cross-compatible and current with evolving web standards for CSS specifications.
 
 This was built while using [autoprefixer](https://github.com/postcss/autoprefixer), a common and well supported auto prefixer for CSS that works alongside [caniuse.com](http://caniuse.com/).
