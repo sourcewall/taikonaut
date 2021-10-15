@@ -1,98 +1,92 @@
 // ::::::::::::::::::::::::::::::::::::::::::::::::::
 // Starting Point
 //
-// Simplified starting point/css reset
-// This file resets basic tags, but doesn't go as far as Meyer Reset or
-// keep things as organic as Normalize.
+// Incorporation of Andy Piccalilli's "Modern CSS Reset" to update how CSS is
+// set up as a foundation to build on. As build methodology updates (extending
+// from Every Layout - https://every-layout.dev/, also by Andy Piccalilli and
+// Heydon Pickering), this reset should better complement modern browsers and
+// methods.
+//
+// The original purpose of this Starting Point was, "This file resets basic
+// tags, but doesn't go as far as Meyer Reset or keep things as organic as
+// Normalize."
 //
 // References:
-// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-// http://jaydenseric.com/blog/forget-normalize-or-resets-lay-your-own-css-foundation
+// https://github.com/andy-piccalilli/modern-css-reset
+// https://piccalil.li/blog/a-modern-css-reset/
 // ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-/* Apply a natural box layout model to all elements, but allowing components to change */
-html {
+/* Box sizing rules */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-/* SIMPLIFIED RESET */
-html {
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-tap-highlight-color: transparent;
-}
-body {
-  margin: 0;
-}
-iframe {
-  border: 0;
-}
+
+/* Remove default margin */
+body,
 h1,
 h2,
 h3,
 h4,
-h5,
 p,
-ul,
-ol,
-blockquote,
 figure,
-button {
+blockquote,
+dl,
+dd {
   margin: 0;
-  padding: 0;
 }
-main,
-li {
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
   display: block;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  font-size: inherit;
-}
-strong {
-  font-weight: bold;
-}
-sup {
-  position: relative;
-  top: -.5em;
-  font-size: 65%;
-  line-height: 0;
-  vertical-align: baseline;
-}
-a,
-button {
-  color: inherit;
-}
-a {
-  text-decoration: none;
-}
-button {
-  overflow: visible;
-  border: 0;
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
   font: inherit;
-  letter-spacing: inherit;
-  background: none;
-  cursor: pointer;
-  -webkit-font-smoothing: inherit;
-  &:focus {
-    outline: 0;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
   }
-}
-::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border: 0;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
